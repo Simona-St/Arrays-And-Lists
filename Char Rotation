@@ -1,0 +1,33 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace Char_Rotation
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+            char[] arrayChar = Console.ReadLine().ToCharArray();
+            int[] arrayNum = Console.ReadLine().Split(' ').Select(int.Parse).ToArray();
+          
+
+            for (int i = 0; i < arrayNum.Length; i++)
+            {
+                if (arrayNum[i] % 2 == 0)
+                {
+                    arrayChar[i] -= (char)arrayNum[i];
+                }
+
+                else
+                {
+                    arrayChar[i] += (char)arrayNum[i];
+
+                }
+            }
+
+            Console.WriteLine(string.Join("", arrayChar));
+        }
+    }
+}

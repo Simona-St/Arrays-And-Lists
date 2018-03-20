@@ -1,0 +1,67 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace Shoot_List_Elements
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            List<long> elements = new List<long>();
+            long lastShotElement = 0;
+            do
+            {
+                string input = Console.ReadLine();
+                if (input == "stop")
+                {
+                    if (elements.Count > 0)
+                    {
+                        Console.WriteLine("survivors: " + String.Join(" ", elements));
+                    }
+
+                    else
+                    {
+                        Console.WriteLine("you shot them all. last one was " + lastShotElement);
+                    }
+                    return;
+                }
+
+                else if (input == "bang" && elements.Count == 0)
+                {
+                    Console.WriteLine("nobody left to shoot! last one was " + lastShotElement);
+                    return;
+                }
+
+                else if (input == "bang" && elements.Count >= 1)
+                {
+                    long average = elements.Sum() / elements.Count();
+
+                    for (int i = 0; i < elements.Count; i++)
+                    {
+                        if (elements[i] <= average)
+                        {
+                            lastShotElement = elements[i];
+                            elements.Remove(elements[i]);
+                            Console.WriteLine("shot {0}", lastShotElement);
+
+                            for (int j = 0; j < elements.Count; j++)
+                            {
+                                elements[j] -= 1;
+                            }
+                            break;
+                        }
+                    }
+                }
+                else
+                {
+                    long number;
+                    long.TryParse(input, out number);
+                    elements.Insert(0, number);
+                }
+
+            } while (true);
+
+        }
+    }
+}

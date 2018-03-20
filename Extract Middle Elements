@@ -1,0 +1,36 @@
+using System;
+using System.Linq;
+
+namespace _9._Extract_Middle_1__2_or_3_Elements
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+            int[] arr = Console.ReadLine().Split(' ').Select(int.Parse).ToArray();
+            if (arr.Length == 1)
+            {
+                Console.WriteLine("{ " + $"{arr[0]}" + " }");
+                return;
+            }
+            if (arr.Length % 2 == 0)
+            {
+                int middleElement2 = arr[((arr.Length - 1) / 2) + 1];
+                int middleElement1 = arr[(arr.Length - 1) / 2];
+                Console.WriteLine("{ " + $"{middleElement1}, {middleElement2} " + "}");
+
+            }
+
+            else
+            {
+                int middleElement1 = arr[((arr.Length - 1) / 2) - 1];
+                int middleElement2 = arr[(arr.Length - 1) / 2];
+                int middleElement3 = arr[((arr.Length - 1) / 2) + 1];
+                Console.WriteLine("{ " + $"{middleElement1}, {middleElement2}, {middleElement3} " + "}");
+
+            }
+        }
+
+    }
+}

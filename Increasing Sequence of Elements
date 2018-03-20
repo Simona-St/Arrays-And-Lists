@@ -1,0 +1,39 @@
+using System;
+using System.Linq;
+
+namespace Increasing_Sequence_of_Elements
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+            int[] array = Console.ReadLine().Split(' ').Select(int.Parse).ToArray();
+            bool increases = false;
+
+            for (int i = 0; i < array.Length-1; i++)
+            {
+                if (array[i] < array[i+1] )
+                {
+                    increases = true;
+                }
+
+                else
+                {
+                    increases = false;
+                    break;
+                }
+            }
+
+            if (increases == false)
+            {
+                Console.WriteLine("No");
+            }
+
+            else
+            {
+                Console.WriteLine("Yes");
+            }
+        }
+    }
+}

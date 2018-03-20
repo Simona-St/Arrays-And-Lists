@@ -1,0 +1,23 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace Rotate_Array_of_Strings
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+           
+            string[] array = Console.ReadLine().Split(' '); 
+
+            string[] resultArr = new string[array.Length];
+            for (int i = 0; i < array.Length; i++)
+            {
+                resultArr[(i + 1) % array.Length] = array[i];
+            }
+
+            Console.WriteLine(string.Join(" ", resultArr)); 
+        }
+    }
+}

@@ -1,0 +1,88 @@
+using System;
+using System.Linq;
+
+namespace Compare_Char_Arrays
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            char[] arr = Console.ReadLine().Split(' ').Select(char.Parse).ToArray();
+            char[] brr = Console.ReadLine().Split(' ').Select(char.Parse).ToArray();
+            bool isEqual = true;
+            int shorterArr = Math.Min(arr.Length, brr.Length);
+
+            for (int i = 0; i < shorterArr; i++)
+            {
+                if (arr[i] < brr[i])
+                {
+                    foreach (char symbol in arr)
+                    {
+                        Console.Write(symbol);
+                    }
+                    Console.WriteLine();
+                    foreach (char symbol in brr)
+                    {
+                        Console.Write(symbol);
+                    }
+                    Console.WriteLine();
+                    return;
+
+                }
+                else if (arr[i] > brr[i])
+                {
+                    foreach (char symbol in brr)
+                    {
+                        Console.Write(symbol);
+                    }
+                    Console.WriteLine();
+                    foreach (char symbol in arr)
+                    {
+                        Console.Write(symbol);
+                    }
+                    Console.WriteLine();
+                    return;
+                }
+
+            }
+
+            if (isEqual == true)
+            {
+                if (arr.Length >= brr.Length)
+                {
+                    foreach (char symbol in brr)
+                    {
+                        Console.Write(symbol);
+                    }
+
+                    Console.WriteLine();
+                    foreach (char symbol in arr)
+                    {
+                        Console.Write(symbol);
+                    }
+
+                    Console.WriteLine();
+                }
+
+                if (arr.Length < brr.Length)
+                {
+
+                    foreach (char symbol in arr)
+                    {
+                        Console.Write(symbol);
+                    }
+
+                    Console.WriteLine();
+
+                    foreach (char symbol in brr)
+                    {
+                        Console.Write(symbol);
+                    }
+
+                    Console.WriteLine();
+                }
+
+            }
+        }
+    }
+}

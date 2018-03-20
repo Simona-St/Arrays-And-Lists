@@ -1,0 +1,34 @@
+using System;
+
+namespace ArraySymmetry
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+            string[] array = Console.ReadLine().Split(' ');
+            bool isSymetric = false;
+
+            for (int i = 0; i < array.Length / 2; i++)
+            {
+                if (array[i] == array[array.Length - 1 - i])
+                {
+                    isSymetric = true;
+                }
+
+                else
+                {
+                    Console.WriteLine("No");
+                    return;
+                }
+            }
+
+            if (isSymetric == true)
+            {
+                Console.WriteLine("Yes");
+            }
+
+        }
+    }
+}

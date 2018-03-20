@@ -1,0 +1,42 @@
+using System;
+using System.Linq;
+
+namespace Triple_Sum_2
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+            int[] arr = Console.ReadLine().Split(' ').Select(int.Parse).ToArray();
+            bool containsTriplets = false;
+            
+            for (int a = 0; a < arr.Length; a++)
+            {
+                for (int b = 0; b < arr.Length; b++)
+                {
+                    if (a < b)
+                    {
+
+
+                        int sum = (arr[a] + arr[b]);
+                        foreach (var num in arr)
+                        {
+                            if (num == sum)
+                            {
+                                Console.WriteLine($"{arr[a]} + {arr[b]} == {sum}");
+                                containsTriplets = true;
+                            }
+                        }
+                    }
+                }
+            }
+
+            if (containsTriplets == false)
+            {
+                Console.WriteLine("No");
+            }
+
+        }
+    }
+}

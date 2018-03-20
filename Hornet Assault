@@ -1,0 +1,55 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace HornetAssault
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+            List<int> beeHives = Console.ReadLine().Split(' ').Select(int.Parse).ToList();
+            List<int> hornetPower = Console.ReadLine().Split(' ').Select(int.Parse).ToList();
+            List<int> livingBees = new List<int>();
+            int hornetPowerSum = hornetPower.Sum();
+
+            Modified:
+
+            foreach (int beehive in beeHives)
+            {
+                if (hornetPowerSum > beehive)
+                {
+                    beeHives.Remove(beehive);
+                    goto Modified;
+                }
+
+                if (hornetPowerSum <= beehive)
+                {
+                    int index = beeHives.IndexOf(beehive);
+                    beeHives.Remove(beehive);
+                    beeHives.Insert(index, (beehive - hornetPowerSum));
+                    livingBees.Insert(index, (beehive - hornetPowerSum));
+
+                    hornetPower.RemoveAt(0);
+                    hornetPowerSum = hornetPower.Sum();
+
+                    if (beeHives.Count == 1)
+                    {
+                        Console.WriteLine(string.Join(" ", livingBees));
+                        return;
+                    }
+                    goto Modified;
+                }
+
+                if (hornetPowerSum <= 0)
+                {
+                    Console.WriteLine(string.Join(" ", livingBees));
+                    return;
+                }
+            }
+
+            Console.WriteLine(string.Join(" ", hornetPower));
+        }
+    }
+}

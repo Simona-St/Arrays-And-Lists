@@ -1,0 +1,63 @@
+using System;
+using System.Linq;
+using System.Collections.Generic;
+
+namespace LastKNumbersSumsSequence
+{
+    class Program
+
+    {
+        static void Main(string[] args)
+        {
+            string[] arr = Console.ReadLine().Split(' ');
+            string[] brr = Console.ReadLine().Split(' ');
+
+            int countLeft = 0;
+            int maxLeft = 0;
+            int countRight = 0;
+            int maxRight = 0;
+
+            int longerArr = Math.Max(arr.Length, brr.Length);
+            int shorterArr = Math.Min(arr.Length, brr.Length);
+
+            for (int i = 0; i < shorterArr; i++)
+            {
+                if (arr[i] == brr[i])
+                {
+                    countLeft++;
+
+                    if (countLeft > maxLeft)
+                    {
+                        maxLeft = countLeft;
+                    }
+                }
+
+                else
+                {
+                    countLeft = 0;
+                }
+            }
+            for (int i = 0; i < shorterArr; i++)
+            {
+                if (arr[arr.Length - 1 - i] == brr[brr.Length - 1 - i])
+                {
+                    countRight++;
+                    if (countRight > maxRight)
+                    {
+                        maxRight = countRight;
+                    }
+
+                }
+                else
+                {
+                    countRight = 0;
+                }
+            }
+
+            Console.WriteLine(Math.Max(maxLeft, maxRight));
+
+        }
+
+
+    }
+}

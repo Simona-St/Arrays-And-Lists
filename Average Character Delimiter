@@ -1,0 +1,37 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace _2._Average_Character_Delimiter
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string input = Console.ReadLine();
+            string[] originalArr = input.Split(' ').ToArray();
+
+
+            List<char> characters = new List<char>();
+            foreach (string str in originalArr)
+            {
+                for (int i = 0; i < str.Length; i++)
+                {
+                    characters.Add(str[i]);
+                }
+            }
+
+            int sum = 0;
+
+            for (int i = 0; i < characters.Count; i++)
+            {
+                sum += characters[i];
+
+            }
+            sum = sum / characters.Count;
+            char delimiter = Convert.ToChar(sum);
+            delimiter = char.ToUpper(delimiter);
+            Console.WriteLine(String.Join(delimiter, originalArr));
+        }
+    }
+}

@@ -1,0 +1,63 @@
+using System;
+using System.Collections.Generic;
+
+namespace Sieve_of_Eratosthenes
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int n = int.Parse(Console.ReadLine());
+            bool[] primes = new bool[n];
+            List<int> nums = new List<int>();
+            bool isPrime = true;
+            for (int i = 0; i < n; i++)
+            {
+                primes[i] = true;
+
+            }
+            primes[0] = false;
+            if (n <= Math.Abs(1))
+            {
+                return;
+            }
+            primes[1] = false;
+
+            for (int i = 0; i < n; i++)
+            {
+                if (primes[i] == true)
+                {
+                    nums.Add(i);
+                    int divisor = n / i;
+
+                    for (int j = 0; j <= divisor; j++)
+                    {
+                        if (i * j < n)
+                        {
+                            primes[i * j] = false;
+
+                        }
+
+                        if (i * j == n - 1)
+                        {
+                            primes[n - 1] = false;
+
+                        }
+                        if (n % i == 0)
+                        {
+                            isPrime = false;
+                        }
+
+                    }
+                }
+            }
+            if (isPrime == true)
+            {
+                nums.Add(n);
+            }
+
+            Console.WriteLine(string.Join(" ", nums));
+
+        }
+    }
+}

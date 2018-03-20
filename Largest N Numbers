@@ -1,0 +1,33 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+
+namespace Largest_N_Numbers
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+          
+
+            List<int> numbersList = Console.ReadLine()
+              .Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries)
+              .Select(int.Parse).ToList();
+
+            int n = int.Parse(Console.ReadLine());
+            List<int> largestNums = new List<int>();
+
+            numbersList.Sort();
+
+            for (int i = numbersList.Count-1; i > numbersList.Count - 1 - n; i--)
+            {
+                largestNums.Add(numbersList[i]);
+            }
+            Console.WriteLine(String.Join(" ", largestNums));
+
+
+            
+        }
+    }
+}

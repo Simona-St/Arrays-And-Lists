@@ -1,0 +1,28 @@
+using System;
+using System.Linq;
+using System.Collections.Generic;
+
+namespace Array_Elements_Equal_to_Their_Index
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+            int[] intArray = Console.ReadLine().Split(' ').Select(int.Parse).ToArray();
+
+            List<int> intList = new List<int>();
+
+
+            for (int i = 0; i < intArray.Length; i++)
+            {
+                if (intArray[i] == i)
+                {
+                    intList.Add(i);
+                }
+            }
+
+            Console.WriteLine(String.Join(" ", intList));
+        }
+    }
+}
